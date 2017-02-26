@@ -1,0 +1,12 @@
+@import "assets/scss/main.scss";
+@import "assets/scss/test1.scss";
+
+test1{
+  color: #111;
+  border-radius: (3*2)px;
+}
+a{
+    display: flex;
+    border-radius: 5px;
+    background-image: transparent url("img/1.jpg") no-repeat;
+}
