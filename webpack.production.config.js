@@ -56,7 +56,7 @@ const config = {
 
   module: {
     rules: [
-      { test: /\.html$/, use: "html-loader", },
+      { test: /\.html$/, use: "html-loader?interpolate", },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
