@@ -4,20 +4,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
+const PJ = 'src';
+const PD = 'dist';
 const config = {
   devtool: 'cheap-module-source-map', //'cheap-source-map',
-  context: resolve(__dirname, 'app'),
+  context: resolve(__dirname, PJ),
   entry: [
+    './index.html',
     './main.js',
     './main.scss',
   ],
   output: {
     filename: '[name]-[hash].js',
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, PD),
     publicPath: '',
   },
   resolve: {
-    modules: ['node_modules', resolve(__dirname, 'app')]
+    modules: ['node_modules', resolve(__dirname, PJ)]
   },
 
   plugins: [
@@ -53,6 +56,7 @@ const config = {
 
   module: {
     rules: [
+      { test: /\.html$/, use: "html-loader", },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
@@ -66,7 +70,7 @@ const config = {
           loader: 'css-loader?localIdentName=[path][name]__[local]--[hash:base64:5]&modules&importLoaders=1&sourceMap=true&minimize=true!sass-loader',
         }),
       },
-      { test: /\.(png|jpg)$/, use: 'url-loader?limit=15000' },
+      { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=image/png+jpg+gif/[name]-[hash:base64:10].[ext]' },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'file-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'url-loader?limit=10000&mimetype=application/font-woff' },
       { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, use: 'url-loader?limit=10000&mimetype=application/octet-stream' },
