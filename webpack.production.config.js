@@ -67,7 +67,7 @@ const config = {
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          loader: 'css-loader?localIdentName=[path][name]__[local]&modules&importLoaders=1&sourceMap=true!sass-loader',
+          loader: 'css-loader?localIdentName=[path][name]__[local]&modules&importLoaders=1&sourceMap=true!postcss-loader!sass-loader',
         }),
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=image/png+jpg+gif/[name]-[hash:base64:10].[ext]' },
