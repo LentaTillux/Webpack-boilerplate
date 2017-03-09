@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const { path } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -8,7 +8,7 @@ const PJ = 'src';
 const PD = 'dist';
 const config = {
   devtool: 'cheap-module-source-map', //'cheap-source-map',
-  context: resolve(__dirname, PJ),
+  context: path(__dirname, PJ),
   entry: [
     './index.html',
     './main.js',
@@ -16,11 +16,11 @@ const config = {
   ],
   output: {
     filename: '[name]-[hash].js',
-    path: resolve(__dirname, PD),
+    path: path(__dirname, PD),
     publicPath: '',
   },
   resolve: {
-    modules: ['node_modules', resolve(__dirname, PJ)]
+    modules: ['node_modules', path(__dirname, PJ)]
   },
 
   plugins: [
