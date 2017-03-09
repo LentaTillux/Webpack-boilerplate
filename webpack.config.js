@@ -41,7 +41,7 @@ module.exports = {
         }),
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=image/png+jpg+gif/[name]-[hash:base64:10].[ext]' },
-      { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'file-loader' },
+      { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'url-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'url-loader?limit=10000&mimetype=application/font-woff' },
       { test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, use: 'url-loader?limit=10000&mimetype=application/octet-stream' },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml' },
